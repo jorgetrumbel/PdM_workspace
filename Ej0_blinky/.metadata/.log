@@ -1,0 +1,42 @@
+!SESSION 2021-10-26 16:19:59.337 -----------------------------------------------
+eclipse.buildId=Version 1.7.0
+java.version=11.0.10
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2021-10-26 16:20:31.676
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2021-10-26 16:20:31.853
+!MESSAGE Log4j initialized with config file /home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Ej0_blinky/.metadata/.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2021-10-26 16:20:41.370
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2021-10-26 16:38:55.808 -----------------------------------------------
+eclipse.buildId=Version 1.7.0
+java.version=11.0.10
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2021-10-26 16:39:08.686
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2021-10-26 16:39:08.758
+!MESSAGE Log4j initialized with config file /home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Ej0_blinky/.metadata/.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2021-10-26 16:39:12.207
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.core.jobs 4 2 2021-10-26 16:43:25.785
+!MESSAGE An internal error occurred during: "C/C++ Indexer".
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.core.internal.runtime.InternalPlatform.getLog(InternalPlatform.java:365)
+	at org.eclipse.core.runtime.Plugin.getLog(Plugin.java:237)
+	at org.eclipse.cdt.core.CCorePlugin.log(CCorePlugin.java:1612)
+	at org.eclipse.cdt.core.CCorePlugin.log(CCorePlugin.java:1591)
+	at org.eclipse.cdt.core.CCorePlugin.log(CCorePlugin.java:1576)
+	at org.eclipse.cdt.internal.core.pdom.PDOMIndexerJob.run(PDOMIndexerJob.java:175)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
