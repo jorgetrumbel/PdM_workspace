@@ -1,0 +1,25 @@
+/**
+  ******************************************************************************
+  * @file    API_delay.h
+  * @author  AV
+  * @brief   API for non blocking delays
+  ******************************************************************************/
+
+/* Define to prevent recursive inclusion -------------------------------------*/
+#ifndef _API_DELAY_H
+#define _API_DELAY_H
+
+/* Includes ------------------------------------------------------------------*/
+#include <stdio.h>
+#include <stdbool.h>
+#include "stm32f4xx_hal.h"  		/* <- HAL include */
+#include "stm32f4xx_nucleo_144.h" 	/* <- BSP include */
+
+
+
+/* Exported types ------------------------------------------------------------*/
+/* Exported constants --------------------------------------------------------*/
+/* Exported macro ------------------------------------------------------------*/
+/* Exported functions ------------------------------------------------------- */
+
+#endif /* _API_DELAY_H */
