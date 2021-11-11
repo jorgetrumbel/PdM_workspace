@@ -1,0 +1,34 @@
+/**
+  ******************************************************************************
+  * @file    API_debounce.h
+  * @author  AV
+  * @brief   Header de API de anti-rebote
+  ******************************************************************************/
+
+/* Define to prevent recursive inclusion -------------------------------------*/
+#ifndef __API_DEBOUNCE_H
+#define __API_DEBOUNCE_H
+
+/* Includes ------------------------------------------------------------------*/
+
+#include <stdio.h>
+#include <stdbool.h>
+#include "stm32f4xx_hal.h"  		/* <- HAL include */
+
+
+
+/* Exported types ------------------------------------------------------------*/
+
+
+/* Exported constants --------------------------------------------------------*/
+/* Exported macro ------------------------------------------------------------*/
+/* Exported functions ------------------------------------------------------- */
+
+/**
+  * @brief  Funcion para inicializar un delay no bloqueante
+  * @param  delay: puntero a la estructura delay_t
+  * @param 	duration: duracion del delay
+  */
+
+
+#endif /* __API_DEBOUNCE_H */

@@ -1,0 +1,20 @@
+21:33:58 **** Incremental Build of configuration Debug for project Practica2 ****
+make -j8 all 
+arm-none-eabi-gcc "../Drivers/API/src/API_debounce.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F429ZITx -DSTM32F4 -DNUCLEO_F429ZI -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Inc -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica2/Drivers/STM32F4xx_HAL_Driver/Inc" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica2/Drivers/CMSIS/Include" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica2/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica2/Drivers/BSP/STM32F4xx_Nucleo_144" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica2/Drivers/Core/Inc" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica2/Drivers/API" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica2/Drivers/API/inc" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica2/Drivers/API/src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/API/src/API_debounce.d" -MT"Drivers/API/src/API_debounce.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/API/src/API_debounce.o"
+arm-none-eabi-gcc -o "Practica2.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica2/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Practica2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Practica2.elf
+ 
+arm-none-eabi-size   Practica2.elf 
+arm-none-eabi-objdump -h -S  Practica2.elf  > "Practica2.list"
+arm-none-eabi-objcopy  -O binary  Practica2.elf  "Practica2.bin"
+   text	   data	    bss	    dec	    hex	filename
+   7220	     64	   1624	   8908	   22cc	Practica2.elf
+Finished building: default.size.stdout
+ 
+Finished building: Practica2.bin
+ 
+Finished building: Practica2.list
+ 
+
+21:33:59 Build Finished. 0 errors, 0 warnings. (took 1s.180ms)
+

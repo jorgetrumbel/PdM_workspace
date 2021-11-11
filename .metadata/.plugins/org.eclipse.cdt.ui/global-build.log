@@ -1,85 +1,70 @@
-18:05:48 **** Incremental Build of configuration Debug for project Practica1 ****
+21:32:15 **** Incremental Build of configuration Debug for project Practica2 ****
 make -j8 all 
-arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F429ZITx -DSTM32F4 -DNUCLEO_F429ZI -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Inc -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica1/Drivers/STM32F4xx_HAL_Driver/Inc" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica1/Drivers/CMSIS/Include" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica1/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica1/Drivers/BSP/STM32F4xx_Nucleo_144" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica1/Drivers/Core/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
-arm-none-eabi-gcc -o "Practica1.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica1/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Practica1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: Practica1.elf
+arm-none-eabi-gcc "../Drivers/API/src/API_debounce.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F429ZITx -DSTM32F4 -DNUCLEO_F429ZI -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Inc -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica2/Drivers/STM32F4xx_HAL_Driver/Inc" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica2/Drivers/CMSIS/Include" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica2/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica2/Drivers/BSP/STM32F4xx_Nucleo_144" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica2/Drivers/Core/Inc" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica2/Drivers/API" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica2/Drivers/API/inc" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica2/Drivers/API/src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/API/src/API_debounce.d" -MT"Drivers/API/src/API_debounce.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/API/src/API_debounce.o"
+arm-none-eabi-gcc -o "Practica2.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica2/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Practica2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Practica2.elf
  
-arm-none-eabi-size   Practica1.elf 
-arm-none-eabi-objdump -h -S  Practica1.elf  > "Practica1.list"
-arm-none-eabi-objcopy  -O binary  Practica1.elf  "Practica1.bin"
-Finished building: Practica1.list
- 
+arm-none-eabi-size   Practica2.elf 
+arm-none-eabi-objdump -h -S  Practica2.elf  > "Practica2.list"
+arm-none-eabi-objcopy  -O binary  Practica2.elf  "Practica2.bin"
    text	   data	    bss	    dec	    hex	filename
-   6404	     60	   1604	   8068	   1f84	Practica1.elf
+   7220	     64	   1624	   8908	   22cc	Practica2.elf
 Finished building: default.size.stdout
  
-Finished building: Practica1.bin
+Finished building: Practica2.bin
  
-18:07:09 **** Incremental Build of configuration Debug for project Practica1 ****
+Finished building: Practica2.list
+ 
+21:32:22 **** Incremental Build of configuration Debug for project Practica2 ****
 make -j8 all 
-arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F429ZITx -DSTM32F4 -DNUCLEO_F429ZI -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Inc -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica1/Drivers/STM32F4xx_HAL_Driver/Inc" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica1/Drivers/CMSIS/Include" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica1/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica1/Drivers/BSP/STM32F4xx_Nucleo_144" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica1/Drivers/Core/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
-arm-none-eabi-gcc -o "Practica1.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica1/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Practica1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: Practica1.elf
- 
-arm-none-eabi-size   Practica1.elf 
-arm-none-eabi-objdump -h -S  Practica1.elf  > "Practica1.list"
-arm-none-eabi-objcopy  -O binary  Practica1.elf  "Practica1.bin"
+arm-none-eabi-size   Practica2.elf 
    text	   data	    bss	    dec	    hex	filename
-   6404	     60	   1604	   8068	   1f84	Practica1.elf
+   7220	     64	   1624	   8908	   22cc	Practica2.elf
 Finished building: default.size.stdout
  
-Finished building: Practica1.bin
- 
-Finished building: Practica1.list
- 
-18:08:06 **** Incremental Build of configuration Debug for project Practica1 ****
+21:33:35 **** Incremental Build of configuration Debug for project Practica2 ****
 make -j8 all 
-arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F429ZITx -DSTM32F4 -DNUCLEO_F429ZI -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Inc -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica1/Drivers/STM32F4xx_HAL_Driver/Inc" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica1/Drivers/CMSIS/Include" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica1/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica1/Drivers/BSP/STM32F4xx_Nucleo_144" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica1/Drivers/Core/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
-arm-none-eabi-gcc -o "Practica1.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica1/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Practica1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: Practica1.elf
+arm-none-eabi-gcc "../Drivers/API/src/API_debounce.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F429ZITx -DSTM32F4 -DNUCLEO_F429ZI -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Inc -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica2/Drivers/STM32F4xx_HAL_Driver/Inc" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica2/Drivers/CMSIS/Include" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica2/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica2/Drivers/BSP/STM32F4xx_Nucleo_144" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica2/Drivers/Core/Inc" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica2/Drivers/API" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica2/Drivers/API/inc" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica2/Drivers/API/src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/API/src/API_debounce.d" -MT"Drivers/API/src/API_debounce.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/API/src/API_debounce.o"
+../Drivers/API/src/API_debounce.c:72:15: warning: 'delayLedsDuration' defined but not used [-Wunused-variable]
+   72 | static tick_t delayLedsDuration[LED_NUMBER] =  {100,
+      |               ^~~~~~~~~~~~~~~~~
+../Drivers/API/src/API_debounce.c:68:17: warning: 'delayLeds' defined but not used [-Wunused-variable]
+   68 | static delay_t* delayLeds[LED_NUMBER] = {&delayLED1,
+      |                 ^~~~~~~~~
+../Drivers/API/src/API_debounce.c:64:20: warning: 'boardLeds' defined but not used [-Wunused-variable]
+   64 | static Led_TypeDef boardLeds[LED_NUMBER] = {LED1,
+      |                    ^~~~~~~~~
+../Drivers/API/src/API_debounce.c:52:24: warning: 'estadoLeds' defined but not used [-Wunused-variable]
+   52 | static ledToggleTime_t estadoLeds;
+      |                        ^~~~~~~~~~
+arm-none-eabi-gcc -o "Practica2.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica2/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Practica2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Practica2.elf
  
-arm-none-eabi-size   Practica1.elf 
-arm-none-eabi-objdump -h -S  Practica1.elf  > "Practica1.list"
-arm-none-eabi-objcopy  -O binary  Practica1.elf  "Practica1.bin"
+arm-none-eabi-size   Practica2.elf 
+arm-none-eabi-objdump -h -S  Practica2.elf  > "Practica2.list"
+arm-none-eabi-objcopy  -O binary  Practica2.elf  "Practica2.bin"
    text	   data	    bss	    dec	    hex	filename
-   6404	     60	   1604	   8068	   1f84	Practica1.elf
+   6936	     36	   1588	   8560	   2170	Practica2.elf
 Finished building: default.size.stdout
  
-Finished building: Practica1.bin
+Finished building: Practica2.bin
  
-Finished building: Practica1.list
+Finished building: Practica2.list
  
-18:08:52 **** Incremental Build of configuration Debug for project Practica1 ****
+21:33:58 **** Incremental Build of configuration Debug for project Practica2 ****
 make -j8 all 
-arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F429ZITx -DSTM32F4 -DNUCLEO_F429ZI -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Inc -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica1/Drivers/STM32F4xx_HAL_Driver/Inc" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica1/Drivers/CMSIS/Include" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica1/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica1/Drivers/BSP/STM32F4xx_Nucleo_144" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica1/Drivers/Core/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
-arm-none-eabi-gcc -o "Practica1.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica1/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Practica1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: Practica1.elf
+arm-none-eabi-gcc "../Drivers/API/src/API_debounce.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F429ZITx -DSTM32F4 -DNUCLEO_F429ZI -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Inc -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica2/Drivers/STM32F4xx_HAL_Driver/Inc" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica2/Drivers/CMSIS/Include" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica2/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica2/Drivers/BSP/STM32F4xx_Nucleo_144" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica2/Drivers/Core/Inc" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica2/Drivers/API" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica2/Drivers/API/inc" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica2/Drivers/API/src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/API/src/API_debounce.d" -MT"Drivers/API/src/API_debounce.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/API/src/API_debounce.o"
+arm-none-eabi-gcc -o "Practica2.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica2/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Practica2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Practica2.elf
  
-arm-none-eabi-size   Practica1.elf 
-arm-none-eabi-objdump -h -S  Practica1.elf  > "Practica1.list"
-arm-none-eabi-objcopy  -O binary  Practica1.elf  "Practica1.bin"
+arm-none-eabi-size   Practica2.elf 
+arm-none-eabi-objdump -h -S  Practica2.elf  > "Practica2.list"
+arm-none-eabi-objcopy  -O binary  Practica2.elf  "Practica2.bin"
    text	   data	    bss	    dec	    hex	filename
-   6404	     60	   1604	   8068	   1f84	Practica1.elf
+   7220	     64	   1624	   8908	   22cc	Practica2.elf
 Finished building: default.size.stdout
  
-Finished building: Practica1.bin
+Finished building: Practica2.bin
  
-Finished building: Practica1.list
- 
-18:10:32 **** Incremental Build of configuration Debug for project Practica1 ****
-make -j8 all 
-arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F429ZITx -DSTM32F4 -DNUCLEO_F429ZI -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Inc -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica1/Drivers/STM32F4xx_HAL_Driver/Inc" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica1/Drivers/CMSIS/Include" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica1/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica1/Drivers/BSP/STM32F4xx_Nucleo_144" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica1/Drivers/Core/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
-arm-none-eabi-gcc -o "Practica1.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica1/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Practica1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: Practica1.elf
- 
-arm-none-eabi-size   Practica1.elf 
-arm-none-eabi-objdump -h -S  Practica1.elf  > "Practica1.list"
-arm-none-eabi-objcopy  -O binary  Practica1.elf  "Practica1.bin"
-   text	   data	    bss	    dec	    hex	filename
-   6404	     60	   1604	   8068	   1f84	Practica1.elf
-Finished building: default.size.stdout
- 
-Finished building: Practica1.bin
- 
-Finished building: Practica1.list
+Finished building: Practica2.list
  
