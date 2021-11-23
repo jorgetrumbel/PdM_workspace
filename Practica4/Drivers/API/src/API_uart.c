@@ -9,6 +9,7 @@
 /* Includes ------------------------------------------------------------------*/
 
 #include "API_uart.h"
+#include <stdio.h>
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
@@ -53,10 +54,13 @@ bool uartInit(void){
 		char wordLengthStr[] = "Word Legth: 8\n\r";
 		char parityStr[] = "Parity: ODD\n\r";
 		char stopBitsStr[] = "Stop Bits: 1\n\r";
+		char buffer[256] = {};
+		sprintf(buffer, "BaudRate con sprintf: %d \n\r", 9600);
 		HAL_UART_Transmit(&UartHandle, (uint8_t*)baudRateStr, sizeof(baudRateStr)/sizeof(char), 10000);
 		HAL_UART_Transmit(&UartHandle, (uint8_t*)wordLengthStr, sizeof(wordLengthStr)/sizeof(char), 10000);
 		HAL_UART_Transmit(&UartHandle, (uint8_t*)stopBitsStr, sizeof(stopBitsStr)/sizeof(char), 10000);
 		HAL_UART_Transmit(&UartHandle, (uint8_t*)parityStr, sizeof(parityStr)/sizeof(char), 10000);
+		HAL_UART_Transmit(&UartHandle, (uint8_t*)buffer, sizeof(buffer)/sizeof(char), 10000);
 	}
 	return retVal;
 }

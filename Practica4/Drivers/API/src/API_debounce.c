@@ -74,13 +74,7 @@ static tick_t delayLedsDuration[LED_NUMBER] =  {100,
 												500,
 												1000};
 
-static char led1StringSame[] = "Led 1 tiempo: 500\n\r";
-static char led2StringSame[] = "Led 2 tiempo: 500\n\r";
-static char led3StringSame[] = "Led 3 tiempo: 500\n\r";
-
-static char led1StringDif[] = "Led 1 tiempo: 100\n\r";
-static char led2StringDif[] = "Led 2 tiempo: 500\n\r";
-static char led3StringDif[] = "Led 3 tiempo: 1000\n\r";
+static char buffer[200] = {};
 /* Private function prototypes -----------------------------------------------*/
 
 /**
@@ -192,19 +186,17 @@ void buttonPressed(void){
 	if(estadoLeds == TOGGLE_TIME_DIFFERENT){
 		for(uint8_t currentLed = 0; currentLed < LED_NUMBER; currentLed++){
 			delayWrite(delayLeds[currentLed], 500);
+			sprintf(buffer, "LED %d tiempo: %d\n\r",currentLed + 1, 500);
+			uartSendString((uint8_t*)buffer);
 		}
-		uartSendString((uint8_t*)led1StringSame);
-		uartSendString((uint8_t*)led2StringSame);
-		uartSendString((uint8_t*)led3StringSame);
 		estadoLeds = TOGGLE_TIME_SAME;
 	}
 	else if(estadoLeds == TOGGLE_TIME_SAME){
 		for(uint8_t currentLed = 0; currentLed < LED_NUMBER; currentLed++){
 			delayWrite(delayLeds[currentLed], delayLedsDuration[currentLed]);
+			sprintf(buffer, "LED %d tiempo: %d\n\r", currentLed + 1, (int)delayLedsDuration[currentLed]);
+			uartSendString((uint8_t*)buffer);
 		}
-		uartSendString((uint8_t*)led1StringDif);
-		uartSendString((uint8_t*)led2StringDif);
-		uartSendString((uint8_t*)led3StringDif);
 		estadoLeds = TOGGLE_TIME_DIFFERENT;
 	}
 }
