@@ -1,20 +1,10 @@
-22:27:28 **** Incremental Build of configuration Debug for project Practica4 ****
+17:49:46 **** Incremental Build of configuration Debug for project Practica4 ****
 make -j8 all 
-arm-none-eabi-gcc "../Drivers/API/src/API_debounce.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F429ZITx -DSTM32F4 -DNUCLEO_F429ZI -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Inc -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica4/Drivers/STM32F4xx_HAL_Driver/Inc" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica4/Drivers/CMSIS/Include" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica4/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica4/Drivers/BSP/STM32F4xx_Nucleo_144" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica4/Drivers/Core/Inc" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica4/Drivers/STM32F4xx_HAL_Driver/Src" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica4/Drivers/API/src" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica4/Drivers/API" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica4/Drivers" -I"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica4/Drivers/API/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/API/src/API_debounce.d" -MT"Drivers/API/src/API_debounce.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/API/src/API_debounce.o"
-arm-none-eabi-gcc -o "Practica4.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/alejandro/Documents/Programacion_de_microprocesadores/PdM_workspace/Practica4/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Practica4.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: Practica4.elf
- 
 arm-none-eabi-size   Practica4.elf 
-arm-none-eabi-objdump -h -S  Practica4.elf  > "Practica4.list"
-arm-none-eabi-objcopy  -O binary  Practica4.elf  "Practica4.bin"
    text	   data	    bss	    dec	    hex	filename
-  12124	    164	   1916	  14204	   377c	Practica4.elf
+  15156	    164	   1948	  17268	   4374	Practica4.elf
 Finished building: default.size.stdout
  
-Finished building: Practica4.bin
- 
-Finished building: Practica4.list
- 
 
-22:27:29 Build Finished. 0 errors, 0 warnings. (took 1s.233ms)
+17:49:47 Build Finished. 0 errors, 0 warnings. (took 724ms)
 

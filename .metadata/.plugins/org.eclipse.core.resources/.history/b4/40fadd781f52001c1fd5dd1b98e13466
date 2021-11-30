@@ -1,0 +1,11 @@
+API_uart.c:36:6:uartInit	344	static
+API_uart.c:83:6:uartSendString	24	static
+API_uart.c:92:6:getRxFlag	16	static
+API_uart.c:98:6:echoBuffer	8	static
+API_uart.c:104:6:HAL_UART_RxCpltCallback	24	static
+API_uart.c:119:6:HAL_UART_RxHalfCpltCallback	16	static
+API_uart.c:122:6:HAL_UART_ErrorCallback	16	static
+API_uart.c:125:6:HAL_UART_AbortCpltCallback	16	static
+API_uart.c:128:6:HAL_UART_AbortReceiveCpltCallback	16	static
+API_uart.c:131:6:HAL_UARTEx_RxEventCallback	16	static
+API_uart.c:138:6:USART3_IRQHandler	8	static

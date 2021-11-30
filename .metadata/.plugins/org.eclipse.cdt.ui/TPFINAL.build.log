@@ -1,0 +1,10 @@
+19:01:54 **** Incremental Build of configuration Debug for project TPFINAL ****
+make -j8 all 
+arm-none-eabi-size   TPFINAL.elf 
+   text	   data	    bss	    dec	    hex	filename
+  14920	    192	   1752	  16864	   41e0	TPFINAL.elf
+Finished building: default.size.stdout
+ 
+
+19:01:54 Build Finished. 0 errors, 0 warnings. (took 734ms)
+
