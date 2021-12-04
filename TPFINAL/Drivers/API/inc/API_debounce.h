@@ -25,6 +25,12 @@
 /* Exported functions ------------------------------------------------------- */
 
 /**
+  * @brief  Funcion para verificar si el pulsador fue presionado
+  * @retval	Booleano indicando si el pulsador fue presionado
+  */
+bool get_button_pressed_status(void);
+
+/**
   * @brief  Funcion para inicializar el control de anti rebote
   * @retval	Booleano indicando correcta inicializacion
   */

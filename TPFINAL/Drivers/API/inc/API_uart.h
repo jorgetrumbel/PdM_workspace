@@ -23,6 +23,8 @@
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
 
+#define RX_BUFFER_SIZE 5
+
 /* User can use this section to tailor USARTx/UARTx instance used and associated
    resources */
 /* Definition for USARTx clock resources */
@@ -49,30 +51,37 @@
 void USART3_IRQHandler(void);
 
 /**
-  * @brief
+  * @brief Inicializa la uart
   * @param  None
-  * @retval None
+  * @retval bool: Devuelve si la inicializacion de la uart fue realizada correctamente
   */
-bool uartInit();
+bool uartInit(void);
 
 
 /**
-  * @brief
-  * @param  pstring
+  * @brief Envia un string por uart
+  * @param  pstring: String a ser enviado por uart
   * @retval None
   */
 void uartSendString(uint8_t *pstring);
 
 /**
-  * @brief
-  * @param  pstring
-  * @retval None
+  * @brief Verifica si se recibio un nuevo mensaje por uart.
+  * @param  None
+  * @retval bool: Indica si se recibio un mensaje nuevo
   */
 bool getRxFlag(void);
 
 /**
-  * @brief
-  * @param  pstring
+  * @brief Copia el mensaje almacenado en el buffer de la uart.
+  * @param  pbuffer: String donde se desea guardar el mensaje recibido
+  * @retval None
+  */
+void getRxBuffer(uint8_t * pbuffer);
+
+/**
+  * @brief Transmite por la uart el mensaje en el buffer de recepcion
+  * @param  None
   * @retval None
   */
 void echoBuffer(void);

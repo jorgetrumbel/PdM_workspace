@@ -1,0 +1,47 @@
+/**
+  ******************************************************************************
+  * @file    API_led_handler.h
+  * @author  AV
+  * @brief   Header de API de leds
+  ******************************************************************************/
+
+/* Define to prevent recursive inclusion -------------------------------------*/
+#ifndef __API_LED_HANDLER_H
+#define __API_LED_HANDLER_H
+
+/* Includes ------------------------------------------------------------------*/
+
+#include <stdio.h>
+#include <stdbool.h>
+#include "stm32f4xx_hal.h"  		/* <- HAL include */
+#include "stm32f4xx_nucleo_144.h"
+
+
+/* Exported types ------------------------------------------------------------*/
+
+
+/* Exported constants --------------------------------------------------------*/
+/* Exported macro ------------------------------------------------------------*/
+/* Exported functions ------------------------------------------------------- */
+
+
+
+/**
+  * @brief  Funcion para inicializar el control de anti rebote
+  * @retval	Booleano indicando correcta inicializacion
+  */
+void initLeds(void);
+
+/**
+  * @brief  Funcion para inicializar el control de anti rebote
+  * @retval	Booleano indicando correcta inicializacion
+  */
+void ledUpdate(void);
+
+/**
+  * @brief  Funcion para inicializar el control de anti rebote
+  * @retval	Booleano indicando correcta inicializacion
+  */
+void ledModifyDuration(uint8_t ledNumber, uint32_t duration);
+
+#endif /* __API_LED_HANDLER_H */

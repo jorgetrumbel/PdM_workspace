@@ -7,16 +7,19 @@
 C_SRCS += \
 ../Drivers/API/src/API_debounce.c \
 ../Drivers/API/src/API_delay.c \
+../Drivers/API/src/API_led_handler.c \
 ../Drivers/API/src/API_uart.c 
 
 OBJS += \
 ./Drivers/API/src/API_debounce.o \
 ./Drivers/API/src/API_delay.o \
+./Drivers/API/src/API_led_handler.o \
 ./Drivers/API/src/API_uart.o 
 
 C_DEPS += \
 ./Drivers/API/src/API_debounce.d \
 ./Drivers/API/src/API_delay.d \
+./Drivers/API/src/API_led_handler.d \
 ./Drivers/API/src/API_uart.d 
 
 

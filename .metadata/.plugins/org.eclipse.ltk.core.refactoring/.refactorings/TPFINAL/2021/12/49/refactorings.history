@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;TPFINAL/Drivers/API/inc/API_led_handler&apos; to &apos;API_led_handler.h&apos;" description="Rename resource &apos;API_led_handler&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Drivers/API/inc/API_led_handler" name="API_led_handler.h" stamp="1638319030843" updateReferences="true"/>
+</session>

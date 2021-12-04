@@ -13,7 +13,6 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
-#define RX_BUFFER_SIZE 5
 /* Private macro -------------------------------------------------------------*/
 
 /* Private variables ---------------------------------------------------------*/
@@ -25,7 +24,7 @@ uint8_t aRXBufferUser[RX_BUFFER_SIZE];
 uint8_t aRXBufferA[RX_BUFFER_SIZE];
 uint8_t aRXBufferB[RX_BUFFER_SIZE];
 
-static uint32_t registerReader;
+//static uint32_t registerReader;
 
 static bool rxFlag;
 
@@ -95,6 +94,12 @@ bool getRxFlag(void){
 	return retVal;
 }
 
+void getRxBuffer(uint8_t * pbuffer){
+	for (uint8_t i = 0; i < RX_BUFFER_SIZE; i++){
+		*(pbuffer + i) = aRXBufferA[i];
+	}
+}
+
 void echoBuffer(void){
 	HAL_UART_Transmit(&UartHandle, aRXBufferA, RX_BUFFER_SIZE, 10000);
 }
@@ -105,31 +110,20 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *UartHandle){
 	rxFlag = true;
 	for (uint8_t i = 0; i < RX_BUFFER_SIZE; i++){
 		aRXBufferA[i] = aRXBufferUser[i];
-		aRXBufferUser[i] = 0;
 	}
+	/*
 	registerReader = UartHandle->Instance->DR;
 	UartHandle->Instance->CR1 |= 0b100000;
 	UartHandle->Instance->CR1 |= 0b1000000000;
 	UartHandle->Instance->CR3 |= 0b1;
 	UartHandle->RxState = HAL_UART_STATE_BUSY_RX;
 	UartHandle->RxXferCount = RX_BUFFER_SIZE;
-	UartHandle->pRxBuffPtr = aRXBufferUser;
+	UartHandle->pRxBuffPtr = aRXBufferUser;*/
+	UART_Start_Receive_IT(UartHandle, aRXBufferUser, RX_BUFFER_SIZE);
 }
 
-void HAL_UART_RxHalfCpltCallback(UART_HandleTypeDef *huart){
-	rxFlag = true;
-}
+
 void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart){
-	rxFlag = true;
-}
-void HAL_UART_AbortCpltCallback(UART_HandleTypeDef *huart){
-	rxFlag = true;
-}
-void HAL_UART_AbortReceiveCpltCallback(UART_HandleTypeDef *huart){
-	rxFlag = true;
-}
-void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size){
-	rxFlag = true;
 }
 
 /**
@@ -137,13 +131,7 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size){
   */
 void USART3_IRQHandler(void)
 {
-  /* USER CODE BEGIN USART3_IRQn 0 */
-
-  /* USER CODE END USART3_IRQn 0 */
   HAL_UART_IRQHandler(&UartHandle);
-  /* USER CODE BEGIN USART3_IRQn 1 */
-
-  /* USER CODE END USART3_IRQn 1 */
 }
 
 /**

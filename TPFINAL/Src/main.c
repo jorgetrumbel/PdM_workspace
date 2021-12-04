@@ -22,46 +22,91 @@
 #include "main.h"
 #include "API_uart.h"
 #include "API_debounce.h"
-#include "API_delay.h"
+#include "API_led_handler.h"
 
 /* Private typedef -----------------------------------------------------------*/
+
+// enumerado con estados de aplicacion
+typedef enum{
+    STATE_LED_BLINK,
+	STATE_LED_MANUAL,
+	STATE_ERROR
+} state_t;
+
 /* Private define ------------------------------------------------------------*/
 
-#define LED_NUMBER 3
+#define MANUAL_MODE_ACTIVATION_MESSAGE 1234
+#define BLINK_MODE_ACTIVATION_MESSAGE 1234
+
+#define MANUAL_MODE_LED_ON_MESSAGE 1000
+#define MANUAL_MODE_LED_OFF_MESSAGE 0
 
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 
-/*Declaracion de las estructuras de delays para leds*/
-static delay_t delayLED1;
-static delay_t delayLED2;
-static delay_t delayLED3;
-
 static uint8_t messageReceivedString[] =  "\n\rMESSAGE RECEIVED \n\r";
 static uint8_t nextLineString[] =  "\n\r";
 
-static uint32_t ledDuration = 100;
+static uint32_t ledDuration;
 
+static uint8_t buffer[RX_BUFFER_SIZE] = {};
+static char msgbuffer[100] = {};
 
-/*Arreglos con la info para cada LED*/
-static Led_TypeDef boardLeds[LED_NUMBER] = {LED1,
-											LED2,
-											LED3};
-
-static delay_t* delayLeds[LED_NUMBER] = {&delayLED1,
-										 &delayLED2,
-										 &delayLED3};
-
-static tick_t delayLedsDuration[LED_NUMBER] =  {100,
-												500,
-												1000};
-
-
-static char buffer[200] = {};
+static state_t app_state;
 
 /* Private function prototypes -----------------------------------------------*/
 static void SystemClock_Config(void);
 static void Error_Handler(void);
+
+/**
+  * @brief Realiza las funciones del estado Blink.
+  * @param  None
+  * @retval None
+  */
+static void ledBlinkStateUpdate(void);
+
+/**
+  * @brief Realiza las funciones del estado Manual.
+  * @param  None
+  * @retval None
+  */
+static void ledManualStateUpdate(void);
+
+/**
+  * @brief Realiza las funciones del estado Error.
+  * @param  None
+  * @retval None
+  */
+static void errorStateUpdate(void);
+
+/**
+  * @brief Realiza las acciones para cambiar al estado Error.
+  * @param  None
+  * @retval None
+  */
+static void switchToErrorState(void);
+
+/**
+  * @brief Realiza las acciones para cambiar al estado Manual.
+  * @param  None
+  * @retval None
+  */
+static void switchToLedManualState(void);
+
+/**
+  * @brief Realiza las acciones para cambiar al estado Blink.
+  * @param  None
+  * @retval None
+  */
+static void switchToLedBlinkState(void);
+
+/**
+  * @brief Verifica si el mensaje recibido es valido.
+  * @param  pbuffer: puntero al arreglo de caracteres a verificar
+  * @param  size: Cantidad de caracteres
+  * @retval bool: Indica si el mensaje es valido
+  */
+static bool bufferChecker(uint8_t* pbuffer, uint16_t size);
 
 /* Private functions ---------------------------------------------------------*/
 
@@ -87,36 +132,152 @@ int main(void)
 	/* Configure the system clock to 180 MHz */
 	SystemClock_Config();
 
-	/* Initialize BSP Leds*/
-	BSP_LED_Init(LED1);
-	BSP_LED_Init(LED2);
-	BSP_LED_Init(LED3);
-
-	for(uint8_t currentLed = 0; currentLed < LED_NUMBER; currentLed++){
-		delayInit(delayLeds[currentLed], delayLedsDuration[currentLed]);
-	}
+	initLeds();
 
 	debounceInit();
 
 	uartInit();
+
+	app_state = STATE_LED_BLINK;
 
 	/* Infinite loop */
 	while (1)
 	{
 	  debounceUpdate();
 
-	  for(uint8_t currentLed = 0; currentLed < LED_NUMBER; currentLed++){
-		if(delayRead(delayLeds[currentLed])){
-			BSP_LED_Toggle(boardLeds[currentLed]);
-		}
+	  ledUpdate();
+
+	  switch(app_state){
+		  case STATE_LED_BLINK:
+		  {
+			  ledBlinkStateUpdate();
+			  break;
+		  }
+		  case STATE_LED_MANUAL:
+		  {
+			  ledManualStateUpdate();
+			  break;
+		  }
+		  case STATE_ERROR:
+		  {
+			  errorStateUpdate();
+			  break;
+		  }
+		  default:
+		  {
+			  switchToErrorState();
+			  break;
+		  }
 	  }
 
-	  if(getRxFlag()){
-		  uartSendString(messageReceivedString);
-		  echoBuffer();
-		  uartSendString(nextLineString);
-	  }
+
 	}
+}
+
+
+static bool bufferChecker(uint8_t* pbuffer, uint16_t size){
+	bool retVal = true;
+	for(uint8_t i = 0; i < size; i++){
+		if(*(pbuffer + i) > '9' || *(pbuffer + i) < '0'){
+			retVal = false;
+		}
+	}
+	return retVal;
+}
+
+static void ledBlinkStateUpdate(void){
+	if(getRxFlag()){
+		uartSendString(messageReceivedString);
+		echoBuffer();
+		uartSendString(nextLineString);
+		getRxBuffer(buffer);
+		if(bufferChecker(buffer, RX_BUFFER_SIZE)){
+			ledDuration = (buffer[1] - '0') * 1000 + (buffer[2] - '0') * 100 + (buffer[3] - '0') * 10 + buffer[4] - '0';
+			if((buffer[0] - '4') < 3 && buffer[0] > '0'){
+				ledModifyDuration(buffer[0] - '1', ledDuration);
+				sprintf(msgbuffer, "LED %d duration: %d \n\r", buffer[0] - '0',(int)ledDuration);
+				uartSendString((uint8_t*)msgbuffer);
+			}
+			else if((buffer[0] - '0') == 0){
+				if(ledDuration == MANUAL_MODE_ACTIVATION_MESSAGE){
+					switchToLedManualState();
+
+				}
+			}
+		}
+	}
+	if(get_button_pressed_status()){
+		switchToErrorState();
+	}
+}
+
+static void ledManualStateUpdate(void){
+	if(getRxFlag()){
+		uartSendString(messageReceivedString);
+		echoBuffer();
+		uartSendString(nextLineString);
+		getRxBuffer(buffer);
+		if(bufferChecker(buffer, RX_BUFFER_SIZE)){
+			ledDuration = (buffer[1] - '0') * 1000 + (buffer[2] - '0') * 100 + (buffer[3] - '0') * 10 + buffer[4] - '0';
+			if((buffer[0] - '0') < 4 && buffer[0] > '0'){
+				if(MANUAL_MODE_LED_OFF_MESSAGE == ledDuration){
+					ledSetDiscrete(buffer[0] - '1', LED_OFF);
+					sprintf(msgbuffer, "LED %d OFF \n\r", buffer[0] - '0');
+					uartSendString((uint8_t*)msgbuffer);
+				}
+				else if(MANUAL_MODE_LED_ON_MESSAGE == ledDuration){
+					ledSetDiscrete(buffer[0] - '1', LED_ON);
+					sprintf(msgbuffer, "LED %d ON \n\r", buffer[0] - '0');
+					uartSendString((uint8_t*)msgbuffer);
+				}
+			}
+			else if((buffer[0] - '0') == 0){
+				if(ledDuration == BLINK_MODE_ACTIVATION_MESSAGE){
+					switchToLedBlinkState();
+				}
+			}
+		}
+	}
+}
+
+static void errorStateUpdate(void){
+	if(getRxFlag()){
+		uartSendString(messageReceivedString);
+		echoBuffer();
+		uartSendString(nextLineString);
+		getRxBuffer(buffer);
+		if(bufferChecker(buffer, RX_BUFFER_SIZE)){
+			ledDuration = (buffer[1] - '0') * 1000 + (buffer[2] - '0') * 100 + (buffer[3] - '0') * 10 + buffer[4] - '0';
+			if((buffer[0] - '0') == 0){
+				if(ledDuration == BLINK_MODE_ACTIVATION_MESSAGE){
+					switchToLedBlinkState();
+				}
+			}
+		}
+	}
+}
+
+static void switchToErrorState(void){
+	ledModifyAllOperationMode(MODE_LED_DISCRETE);
+	ledSetAllDiscreteLeds(LED_OFF);
+	sprintf(msgbuffer, "Switching to error mode \n\r");
+	uartSendString((uint8_t*)msgbuffer);
+	app_state = STATE_ERROR;
+}
+
+static void switchToLedManualState(void){
+	ledModifyAllOperationMode(MODE_LED_DISCRETE);
+	ledSetAllDiscreteLeds(LED_OFF);
+	sprintf(msgbuffer, "Switching to manual mode \n\r");
+	uartSendString((uint8_t*)msgbuffer);
+	app_state = STATE_LED_MANUAL;
+}
+
+static void switchToLedBlinkState(void){
+	ledModifyAllOperationMode(MODE_LED_BLINK);
+	sprintf(msgbuffer, "Switching to Blink mode \n\r");
+	uartSendString((uint8_t*)msgbuffer);
+	app_state = STATE_LED_BLINK;
 }
 
 /**
@@ -194,39 +355,7 @@ static void SystemClock_Config(void)
   */
 static void Error_Handler(void)
 {
-  /* Turn LED2 on */
-  BSP_LED_On(LED2);
   while (1)
   {
   }
 }
-
-#ifdef  USE_FULL_ASSERT
-/**
-  * @brief  Reports the name of the source file and the source line number
-  *         where the assert_param error has occurred.
-  * @param  file: pointer to the source file name
-  * @param  line: assert_param error line source number
-  * @retval None
-  */
-void assert_failed(uint8_t *file, uint32_t line)
-{
-  /* User can add his own implementation to report the file name and line number,
-     ex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
-
-  /* Infinite loop */
-  while (1)
-  {
-  }
-}
-#endif
-
-/**
-  * @}
-  */
-
-/**
-  * @}
-  */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

@@ -42,6 +42,8 @@ static debounce_t estadoActual;
 /*Declaracion de las estructuras de delays para leds*/
 static delay_t delayDebounce;
 
+static bool button_pressed_status;
+
 /* Private function prototypes -----------------------------------------------*/
 
 /**
@@ -58,6 +60,8 @@ void buttonReleased(void);
 
 bool debounceInit(void){
 	estadoActual = BUTTON_UP;
+
+	button_pressed_status = false;
 
 	/* Initialize BSP PB for BUTTON_USER */
 	BSP_PB_Init(BUTTON_USER, BUTTON_MODE_GPIO);
@@ -114,10 +118,16 @@ void debounceUpdate(void){
 		}
 	}
 }
+
+bool get_button_pressed_status(void){
+	bool retVal = button_pressed_status;
+	button_pressed_status = false;
+	return retVal;
+}
 /* Private functions ---------------------------------------------------------*/
 
 void buttonPressed(void){
-
+	button_pressed_status = true;
 }
 
 void buttonReleased(void){
