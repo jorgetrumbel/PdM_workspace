@@ -13,5 +13,5 @@ org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Practica0/activeLaunchMode=debu
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Practica1/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Practica2/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Practica4/activeLaunchMode=run
-org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:TPFINAL/activeLaunchMode=run
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:TPFINAL/activeLaunchMode=debug
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:TP_Final\ Debug/activeLaunchMode=run

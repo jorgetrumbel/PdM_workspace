@@ -193,7 +193,7 @@ static void ledBlinkStateUpdate(void){
 		getRxBuffer(buffer);
 		if(bufferChecker(buffer, RX_BUFFER_SIZE)){
 			ledDuration = (buffer[1] - '0') * 1000 + (buffer[2] - '0') * 100 + (buffer[3] - '0') * 10 + buffer[4] - '0';
-			if((buffer[0] - '4') < 3 && buffer[0] > '0'){
+			if((buffer[0] - '1') < 3 && buffer[0] > '0'){
 				ledModifyDuration(buffer[0] - '1', ledDuration);
 				sprintf(msgbuffer, "LED %d duration: %d \n\r", buffer[0] - '0',(int)ledDuration);
 				uartSendString((uint8_t*)msgbuffer);
